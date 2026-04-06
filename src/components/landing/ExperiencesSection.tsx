@@ -46,25 +46,27 @@ const ExperiencesSection = () => {
           {experiences.map((exp, i) => (
             <motion.div
               key={exp.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              transition={{ duration: 0.7, delay: i * 0.15, type: "spring", stiffness: 80 }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className="group bg-background border border-border rounded-2xl overflow-hidden hover:border-primary/30 transition-colors duration-300"
               style={{ boxShadow: "0 4px 20px hsl(var(--foreground) / 0.04)" }}
             >
-              <div className="h-48 overflow-hidden">
-                <img
+              <div className="h-52 overflow-hidden">
+                <motion.img
                   src={exp.image}
                   alt={exp.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
                   loading="lazy"
                   width={640}
                   height={640}
                 />
               </div>
-              <div className="p-6">
+              <div className="p-7">
                 <h3 className="font-serif text-xl md:text-2xl text-foreground mb-3">{exp.title}</h3>
                 <p className="font-sans text-muted-foreground text-sm md:text-base leading-relaxed">{exp.description}</p>
               </div>
