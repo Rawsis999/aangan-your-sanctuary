@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import aanganLogo from "@/assets/aangan-logo.svg";
+import aanganLogo from "@/assets/aangan-logo.png";
 
 const FooterSection = () => {
   return (
     <footer className="relative overflow-hidden">
       {/* CTA Section */}
-      <div id="reservation" className="py-20 md:py-28 text-center bg-mud">
+      <div className="py-20 md:py-28 text-center bg-mud">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -21,14 +21,13 @@ const FooterSection = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#"
-              className="inline-block bg-amber text-mud font-sans font-semibold px-8 py-4 rounded-full text-base hover:scale-105 transition-transform duration-300"
-              style={{ boxShadow: "0 4px 24px hsl(var(--amber-glow) / 0.4)" }}
+              className="inline-block bg-primary text-primary-foreground font-sans font-semibold px-9 py-4 rounded-full text-base hover:bg-secondary hover:text-secondary-foreground transition-colors duration-300"
             >
               Find Locations
             </a>
             <a
               href="#"
-              className="inline-block border border-cream/30 text-cream font-sans font-medium px-8 py-4 rounded-full text-base hover:bg-cream/10 transition-colors duration-300"
+              className="inline-block bg-cream text-mud font-sans font-medium px-9 py-4 rounded-full text-base hover:bg-amber hover:text-mud transition-colors duration-300"
             >
               Join the Newsletter
             </a>
@@ -41,7 +40,7 @@ const FooterSection = () => {
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="flex items-center gap-3">
-              <img src={aanganLogo} alt="Aangan" className="h-10 w-auto" loading="lazy" />
+              <img src={aanganLogo} alt="Aangan" className="h-12 w-auto" loading="lazy" />
               <div>
                 <h3 className="font-serif text-xl text-cream">Aangan</h3>
                 <p className="font-sans text-cream/40 text-sm italic">Proudly un-groomed.</p>

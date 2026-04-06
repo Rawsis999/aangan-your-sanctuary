@@ -1,10 +1,11 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const FairyLight = ({ delay, left, top }: { delay: number; left: string; top: string }) => (
   <motion.div
-    className="absolute w-1.5 h-1.5 rounded-full bg-amber"
-    style={{ left, top, boxShadow: "0 0 8px 2px hsl(var(--amber-glow) / 0.6)" }}
+    className="absolute w-2 h-2 rounded-full bg-amber"
+    style={{ left, top, boxShadow: "0 0 10px 3px hsl(var(--amber-glow) / 0.6)" }}
     animate={{ opacity: [0.2, 1, 0.2] }}
     transition={{ duration: 2.5 + delay, repeat: Infinity, ease: "easeInOut" }}
   />
@@ -24,32 +25,42 @@ const fairyLights = [
 ];
 
 const HeroSection = () => {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image */}
-      <img
+    <section ref={ref} id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Parallax background image */}
+      <motion.img
         src={heroBg}
         alt="Aangan courtyard exterior"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-[120%] object-cover"
+        style={{ y: bgY }}
         width={1920}
         height={1080}
       />
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/45" />
+      <div className="absolute inset-0 bg-black/50" />
 
       {/* Fairy lights */}
       {fairyLights.map((light, i) => (
         <FairyLight key={i} {...light} />
       ))}
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
+      {/* Content with parallax */}
+      <motion.div
+        style={{ y: textY, opacity }}
+        className="relative z-10 text-center px-6 max-w-3xl mx-auto"
+      >
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-amber font-sans text-sm tracking-[0.3em] uppercase mb-6"
+          className="text-amber font-sans text-sm md:text-base tracking-[0.3em] uppercase mb-6"
         >
           Your Neighborhood Aangan
         </motion.p>
@@ -58,7 +69,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium text-cream leading-tight mb-6"
+          className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium text-white leading-tight mb-6"
         >
           Leave a Little Lighter.
         </motion.h1>
@@ -67,7 +78,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-cream/70 font-sans text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed"
+          className="text-white/80 font-sans text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed"
         >
           Your neighborhood 'Aangan.' No dressing up. Just you and the stars.
         </motion.p>
@@ -77,12 +88,12 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="inline-block bg-amber text-mud font-sans font-semibold px-8 py-4 rounded-full text-base hover:scale-105 transition-transform duration-300"
-          style={{ boxShadow: "0 4px 24px hsl(var(--amber-glow) / 0.4)" }}
+          className="inline-block bg-primary text-primary-foreground font-sans font-semibold px-10 py-4 rounded-full text-lg hover:bg-secondary hover:text-secondary-foreground transition-colors duration-300"
+          style={{ boxShadow: "0 4px 24px hsl(var(--primary) / 0.4)" }}
         >
           Vibe with Us — Menu & Hours ↓
         </motion.a>
-      </div>
+      </motion.div>
 
       {/* Scroll indicator */}
       <motion.div
@@ -90,8 +101,8 @@ const HeroSection = () => {
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <div className="w-6 h-10 rounded-full border-2 border-cream/30 flex items-start justify-center p-1.5">
-          <div className="w-1.5 h-3 rounded-full bg-cream/50" />
+        <div className="w-6 h-10 rounded-full border-2 border-white/40 flex items-start justify-center p-1.5">
+          <div className="w-1.5 h-3 rounded-full bg-white/60" />
         </div>
       </motion.div>
     </section>

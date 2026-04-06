@@ -5,6 +5,7 @@ import ExperiencesSection from "@/components/landing/ExperiencesSection";
 import MenuSection from "@/components/landing/MenuSection";
 import SocialFeedSection from "@/components/landing/SocialFeedSection";
 import CommunitySection from "@/components/landing/CommunitySection";
+import ReservationSection from "@/components/landing/ReservationSection";
 import FooterSection from "@/components/landing/FooterSection";
 
 const Index = () => {
@@ -18,6 +19,7 @@ const Index = () => {
         <MenuSection />
         <SocialFeedSection />
         <CommunitySection />
+        <ReservationSection />
         <FooterSection />
       </main>
     </>

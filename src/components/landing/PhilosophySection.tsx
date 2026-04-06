@@ -1,12 +1,17 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import philosophyBg from "@/assets/philosophy-bg.jpg";
 
 const PhilosophySection = () => {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+
   return (
-    <section id="philosophy" className="relative py-24 md:py-32 bg-background overflow-hidden">
+    <section ref={ref} id="philosophy" className="relative py-24 md:py-32 bg-background overflow-hidden">
       <div className="relative z-10 max-w-5xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
-          {/* Image */}
+          {/* Image with parallax */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -14,10 +19,11 @@ const PhilosophySection = () => {
             transition={{ duration: 0.8 }}
             className="rounded-2xl overflow-hidden"
           >
-            <img
+            <motion.img
               src={philosophyBg}
               alt="People relaxing in a warm courtyard"
               className="w-full h-[300px] md:h-[420px] object-cover"
+              style={{ y: imgY }}
               loading="lazy"
               width={1280}
               height={720}
@@ -44,13 +50,19 @@ const PhilosophySection = () => {
             </p>
 
             {/* Silent Hour Badge */}
-            <div className="inline-flex items-center gap-3 bg-card border border-border rounded-full px-6 py-3">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="inline-flex items-center gap-3 bg-card border border-border rounded-full px-6 py-3"
+            >
               <span className="text-2xl">🌙</span>
               <div className="text-left">
                 <p className="font-sans text-xs tracking-wider uppercase text-muted-foreground">Introvert Friendly</p>
                 <p className="font-serif text-sm text-foreground">Silent Hour — Tuesdays 4–6 PM</p>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

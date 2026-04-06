@@ -1,18 +1,24 @@
 import { motion } from "framer-motion";
 import communityBg from "@/assets/community-bg.jpg";
+import communityGames from "@/assets/community-games.jpg";
+import communityHerbs from "@/assets/community-herbs.jpg";
+import communityLibrary from "@/assets/community-library.jpg";
 
 const communityFeatures = [
   {
+    image: communityLibrary,
     icon: "📚",
     title: "Community Library",
     desc: "Borrow a book, leave a book. Our shelves are curated by the neighborhood.",
   },
   {
+    image: communityGames,
     icon: "🎲",
     title: "Board Game Garden",
     desc: "Ludo, Snakes & Ladders, Carrom — under the trees, the way it used to be.",
   },
   {
+    image: communityHerbs,
     icon: "🌱",
     title: "Community Herb Garden",
     desc: "Pick your own tulsi, mint, or curry leaves. Take some home for your dal.",
@@ -47,7 +53,7 @@ const CommunitySection = () => {
           "A place where you are allowed to look your worst and feel your best."
         </motion.p>
 
-        {/* Community image */}
+        {/* Main community image */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -69,15 +75,28 @@ const CommunitySection = () => {
           {communityFeatures.map((feat, i) => (
             <motion.div
               key={feat.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 40, rotateX: 10 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="text-center bg-card border border-border rounded-2xl p-8"
+              transition={{ duration: 0.7, delay: i * 0.15, type: "spring", stiffness: 80 }}
+              whileHover={{ y: -6, transition: { duration: 0.2 } }}
+              className="bg-card border border-border rounded-2xl overflow-hidden"
             >
-              <span className="text-4xl block mb-4">{feat.icon}</span>
-              <h3 className="font-serif text-xl text-foreground mb-2">{feat.title}</h3>
-              <p className="font-sans text-muted-foreground text-sm leading-relaxed">{feat.desc}</p>
+              <div className="h-44 overflow-hidden">
+                <img
+                  src={feat.image}
+                  alt={feat.title}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  width={800}
+                  height={600}
+                />
+              </div>
+              <div className="text-center p-6">
+                <span className="text-3xl block mb-3">{feat.icon}</span>
+                <h3 className="font-serif text-xl text-foreground mb-2">{feat.title}</h3>
+                <p className="font-sans text-muted-foreground text-sm leading-relaxed">{feat.desc}</p>
+              </div>
             </motion.div>
           ))}
         </div>

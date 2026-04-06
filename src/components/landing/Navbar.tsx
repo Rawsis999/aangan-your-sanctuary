@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import aanganLogo from "@/assets/aangan-logo.svg";
+import aanganLogo from "@/assets/aangan-logo.png";
 
 const navLinks = [
   { label: "Home", href: "#hero" },
@@ -38,7 +38,7 @@ const Navbar = () => {
             <img
               src={aanganLogo}
               alt="Aangan"
-              className="h-10 md:h-12 w-auto"
+              className="h-12 md:h-14 w-auto"
             />
           </a>
 
@@ -48,7 +48,7 @@ const Navbar = () => {
             aria-label="Toggle menu"
           >
             <span
-              className={`block w-6 h-0.5 transition-all duration-300 ${
+              className={`block w-7 h-0.5 transition-all duration-300 ${
                 menuOpen
                   ? "rotate-45 translate-y-2 bg-cream"
                   : scrolled
@@ -57,7 +57,7 @@ const Navbar = () => {
               }`}
             />
             <span
-              className={`block w-6 h-0.5 transition-all duration-300 ${
+              className={`block w-7 h-0.5 transition-all duration-300 ${
                 menuOpen
                   ? "opacity-0"
                   : scrolled
@@ -66,7 +66,7 @@ const Navbar = () => {
               }`}
             />
             <span
-              className={`block w-6 h-0.5 transition-all duration-300 ${
+              className={`block w-7 h-0.5 transition-all duration-300 ${
                 menuOpen
                   ? "-rotate-45 -translate-y-2 bg-cream"
                   : scrolled

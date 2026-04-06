@@ -34,7 +34,6 @@ const menuCategories = [
 
 const MenuSection = () => {
   const [activeTab, setActiveTab] = useState("sips");
-
   const activeCategory = menuCategories.find((c) => c.key === activeTab)!;
 
   return (
@@ -58,9 +57,9 @@ const MenuSection = () => {
             <button
               key={cat.key}
               onClick={() => setActiveTab(cat.key)}
-              className={`font-sans text-sm font-medium px-5 py-2.5 rounded-full transition-all duration-300 ${
+              className={`font-sans text-sm font-medium px-6 py-3 rounded-full transition-colors duration-300 ${
                 activeTab === cat.key
-                  ? "bg-secondary text-secondary-foreground shadow-md"
+                  ? "bg-primary text-primary-foreground"
                   : "bg-card text-muted-foreground hover:bg-muted border border-border"
               }`}
             >
@@ -89,10 +88,10 @@ const MenuSection = () => {
               {activeCategory.items.map((item) => (
                 <div key={item.name} className="border-b border-border/50 pb-4 last:border-0">
                   <div className="flex justify-between items-start mb-1">
-                    <h4 className="font-sans font-semibold text-foreground text-sm">{item.name}</h4>
-                    <span className="font-sans text-primary font-medium text-sm ml-3 shrink-0">{item.price}</span>
+                    <h4 className="font-sans font-semibold text-foreground text-base">{item.name}</h4>
+                    <span className="font-sans text-primary font-medium text-base ml-3 shrink-0">{item.price}</span>
                   </div>
-                  <p className="font-sans text-muted-foreground text-xs leading-relaxed">{item.desc}</p>
+                  <p className="font-sans text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
