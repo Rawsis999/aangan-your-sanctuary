@@ -1,15 +1,11 @@
 import { motion } from "framer-motion";
+import aanganLogo from "@/assets/aangan-logo.svg";
 
 const FooterSection = () => {
   return (
     <footer className="relative overflow-hidden">
       {/* CTA Section */}
-      <div
-        className="py-20 md:py-28 text-center"
-        style={{
-          background: `linear-gradient(160deg, hsl(var(--mud)) 0%, hsl(var(--twilight)) 100%)`,
-        }}
-      >
+      <div id="reservation" className="py-20 md:py-28 text-center bg-mud">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -41,12 +37,15 @@ const FooterSection = () => {
       </div>
 
       {/* Footer Links */}
-      <div className="bg-mud py-12 px-6">
+      <div className="bg-mud py-12 px-6 border-t border-cream/10">
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="text-center md:text-left">
-              <h3 className="font-serif text-2xl text-cream mb-1">Aangan</h3>
-              <p className="font-sans text-cream/40 text-sm italic">Proudly un-groomed.</p>
+            <div className="flex items-center gap-3">
+              <img src={aanganLogo} alt="Aangan" className="h-10 w-auto" loading="lazy" />
+              <div>
+                <h3 className="font-serif text-xl text-cream">Aangan</h3>
+                <p className="font-sans text-cream/40 text-sm italic">Proudly un-groomed.</p>
+              </div>
             </div>
 
             <div className="flex items-center gap-6">

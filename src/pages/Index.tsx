@@ -1,3 +1,4 @@
+import Navbar from "@/components/landing/Navbar";
 import HeroSection from "@/components/landing/HeroSection";
 import PhilosophySection from "@/components/landing/PhilosophySection";
 import ExperiencesSection from "@/components/landing/ExperiencesSection";
@@ -8,15 +9,18 @@ import FooterSection from "@/components/landing/FooterSection";
 
 const Index = () => {
   return (
-    <main className="overflow-x-hidden">
-      <HeroSection />
-      <PhilosophySection />
-      <ExperiencesSection />
-      <MenuSection />
-      <SocialFeedSection />
-      <CommunitySection />
-      <FooterSection />
-    </main>
+    <>
+      <Navbar />
+      <main className="overflow-x-hidden">
+        <HeroSection />
+        <PhilosophySection />
+        <ExperiencesSection />
+        <MenuSection />
+        <SocialFeedSection />
+        <CommunitySection />
+        <FooterSection />
+      </main>
+    </>
   );
 };
 
