@@ -1,23 +1,27 @@
 import { motion } from "framer-motion";
+import stargazingImg from "@/assets/experience-stargazing.jpg";
+import picnicImg from "@/assets/experience-picnic.jpg";
+import charpaiImg from "@/assets/experience-charpai.jpg";
+import mittiImg from "@/assets/experience-mitti.jpg";
 
 const experiences = [
   {
-    icon: "🔭",
+    image: stargazingImg,
     title: "Stargazing Station",
     description: "Nights under the dark sky with our in-house telescopes. Weekly Dark Sky Moments where the lights go out and the stars come alive.",
   },
   {
-    icon: "🧺",
+    image: picnicImg,
     title: "Rent-a-Picnic",
     description: "Grab our basket kits, claim a mat, and unwind in the grass with Lo-Fi playlists humming through the courtyard.",
   },
   {
-    icon: "🛏️",
+    image: charpaiImg,
     title: "Healing Nooks & Charpais",
     description: "Intimate solo spots for reading, resting, and connecting with silence. Woven cots under the shade of old trees.",
   },
   {
-    icon: "🌿",
+    image: mittiImg,
     title: "Mitti Corner",
     description: "A dedicated patch of earth to put your feet down and ground yourself. Earthing, the way our grandparents did it.",
   },
@@ -25,9 +29,7 @@ const experiences = [
 
 const ExperiencesSection = () => {
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden" style={{
-      background: `linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--card)) 100%)`
-    }}>
+    <section id="experiences" className="relative py-24 md:py-32 bg-card overflow-hidden">
       <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -49,12 +51,23 @@ const ExperiencesSection = () => {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="group bg-card border border-border rounded-2xl p-8 hover:border-primary/30 transition-colors duration-300"
+              className="group bg-background border border-border rounded-2xl overflow-hidden hover:border-primary/30 transition-colors duration-300"
               style={{ boxShadow: "0 4px 20px hsl(var(--foreground) / 0.04)" }}
             >
-              <span className="text-4xl block mb-4 group-hover:animate-float">{exp.icon}</span>
-              <h3 className="font-serif text-xl md:text-2xl text-foreground mb-3">{exp.title}</h3>
-              <p className="font-sans text-muted-foreground text-sm md:text-base leading-relaxed">{exp.description}</p>
+              <div className="h-48 overflow-hidden">
+                <img
+                  src={exp.image}
+                  alt={exp.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  width={640}
+                  height={640}
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="font-serif text-xl md:text-2xl text-foreground mb-3">{exp.title}</h3>
+                <p className="font-sans text-muted-foreground text-sm md:text-base leading-relaxed">{exp.description}</p>
+              </div>
             </motion.div>
           ))}
         </div>

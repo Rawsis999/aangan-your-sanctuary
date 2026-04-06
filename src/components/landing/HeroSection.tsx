@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const FairyLight = ({ delay, left, top }: { delay: number; left: string; top: string }) => (
   <motion.div
@@ -24,38 +25,23 @@ const fairyLights = [
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden text-grain">
-      {/* Gradient background */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: `linear-gradient(160deg, hsl(var(--primary) / 0.85) 0%, hsl(var(--mud)) 35%, hsl(var(--twilight)) 80%, hsl(var(--twilight)) 100%)`,
-        }}
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background image */}
+      <img
+        src={heroBg}
+        alt="Aangan courtyard exterior"
+        className="absolute inset-0 w-full h-full object-cover"
+        width={1920}
+        height={1080}
       />
+
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/45" />
 
       {/* Fairy lights */}
       {fairyLights.map((light, i) => (
         <FairyLight key={i} {...light} />
       ))}
-
-      {/* Decorative bougainvillea accent — top corners */}
-      <div className="absolute top-0 left-0 w-48 h-48 opacity-20">
-        <svg viewBox="0 0 200 200" className="w-full h-full">
-          <path d="M0 0 Q60 30 40 80 Q20 60 0 100" fill="hsl(var(--primary) / 0.4)" />
-          <path d="M0 0 Q80 10 60 60 Q30 40 10 80" fill="hsl(var(--foliage) / 0.5)" />
-          <circle cx="35" cy="50" r="6" fill="hsl(var(--primary) / 0.6)" />
-          <circle cx="20" cy="70" r="5" fill="hsl(var(--primary) / 0.5)" />
-          <circle cx="50" cy="35" r="4" fill="hsl(var(--primary) / 0.7)" />
-        </svg>
-      </div>
-      <div className="absolute top-0 right-0 w-48 h-48 opacity-20 scale-x-[-1]">
-        <svg viewBox="0 0 200 200" className="w-full h-full">
-          <path d="M0 0 Q60 30 40 80 Q20 60 0 100" fill="hsl(var(--primary) / 0.4)" />
-          <path d="M0 0 Q80 10 60 60 Q30 40 10 80" fill="hsl(var(--foliage) / 0.5)" />
-          <circle cx="35" cy="50" r="6" fill="hsl(var(--primary) / 0.6)" />
-          <circle cx="20" cy="70" r="5" fill="hsl(var(--primary) / 0.5)" />
-        </svg>
-      </div>
 
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">

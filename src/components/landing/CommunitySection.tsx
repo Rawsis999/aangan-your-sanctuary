@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import communityBg from "@/assets/community-bg.jpg";
 
 const communityFeatures = [
   {
@@ -20,7 +21,7 @@ const communityFeatures = [
 
 const CommunitySection = () => {
   return (
-    <section className="relative py-24 md:py-32 bg-background overflow-hidden">
+    <section id="community" className="relative py-24 md:py-32 bg-background overflow-hidden">
       <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -41,10 +42,28 @@ const CommunitySection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-center font-serif italic text-foreground/70 text-lg md:text-xl mb-16"
+          className="text-center font-serif italic text-foreground/70 text-lg md:text-xl mb-10"
         >
           "A place where you are allowed to look your worst and feel your best."
         </motion.p>
+
+        {/* Community image */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7 }}
+          className="rounded-2xl overflow-hidden mb-14"
+        >
+          <img
+            src={communityBg}
+            alt="Community courtyard with board games and bookshelves"
+            className="w-full h-[260px] md:h-[380px] object-cover"
+            loading="lazy"
+            width={1280}
+            height={720}
+          />
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {communityFeatures.map((feat, i) => (
