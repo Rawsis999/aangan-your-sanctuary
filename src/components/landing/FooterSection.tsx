@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import aanganLogo from "@/assets/aangan-logo.png";
 
 const FooterSection = () => {
   return (
@@ -39,12 +38,9 @@ const FooterSection = () => {
       <div className="bg-mud py-12 px-6 border-t border-cream/10">
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="flex items-center gap-3">
-              <img src={aanganLogo} alt="Aangan" className="h-12 w-auto" loading="lazy" />
-              <div>
-                <h3 className="font-serif text-xl text-cream">Aangan</h3>
-                <p className="font-sans text-cream/40 text-sm italic">Proudly un-groomed.</p>
-              </div>
+            <div>
+              <h3 className="font-serif text-xl text-cream">Aangan</h3>
+              <p className="font-sans text-cream/40 text-sm italic">Proudly un-groomed.</p>
             </div>
 
             <div className="flex items-center gap-6">
