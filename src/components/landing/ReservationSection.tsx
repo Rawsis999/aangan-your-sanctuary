@@ -56,7 +56,7 @@ const ReservationSection = () => {
             <p className="font-sans text-muted-foreground text-sm mt-2">We'll send a confirmation to {phone}</p>
             <Button
               onClick={() => setSubmitted(false)}
-              className="mt-6 bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground rounded-full px-8 py-3 text-base"
+              className="mt-6 bg-primary text-primary-foreground hover:bg-primary-foreground hover:text-primary rounded-full px-8 py-3 text-base"
             >
               Book Another
             </Button>
@@ -177,7 +177,7 @@ const ReservationSection = () => {
             <Button
               type="submit"
               disabled={!date || !timeSlot || !name || !phone}
-              className="w-full bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground rounded-full py-4 text-base font-semibold transition-colors duration-300 disabled:opacity-50"
+              className="w-full bg-primary text-primary-foreground hover:bg-primary-foreground hover:text-primary rounded-full py-4 text-base font-semibold transition-colors duration-300 disabled:opacity-50"
             >
               Reserve My Spot 🪑
             </Button>
