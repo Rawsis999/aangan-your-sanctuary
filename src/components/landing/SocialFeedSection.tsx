@@ -77,7 +77,7 @@ const SocialFeedSection = () => {
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-sans text-sm bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground transition-colors duration-300 rounded-full px-7 py-3.5"
+            className="inline-flex items-center gap-2 font-sans text-sm bg-primary text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-colors duration-300 rounded-full px-7 py-3.5"
           >
             Follow the chaos on Instagram →
           </a>

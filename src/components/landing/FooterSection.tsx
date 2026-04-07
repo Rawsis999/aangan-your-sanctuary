@@ -20,7 +20,7 @@ const FooterSection = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#"
-              className="inline-block bg-primary text-primary-foreground font-sans font-semibold px-9 py-4 rounded-full text-base hover:bg-secondary hover:text-secondary-foreground transition-colors duration-300"
+              className="inline-block bg-primary text-primary-foreground font-sans font-semibold px-9 py-4 rounded-full text-base hover:bg-primary-foreground hover:text-primary transition-colors duration-300"
             >
               Find Locations
             </a>

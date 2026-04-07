@@ -177,7 +177,7 @@ const ReservationSection = () => {
             <Button
               type="submit"
               disabled={!date || !timeSlot || !name || !phone}
-              className="w-full bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground rounded-full py-4 text-base font-semibold transition-colors duration-300 disabled:opacity-50"
+              className="w-full bg-primary text-primary-foreground hover:bg-primary-foreground hover:text-primary rounded-full py-4 text-base font-semibold transition-colors duration-300 disabled:opacity-50"
             >
               Reserve My Spot 🪑
             </Button>

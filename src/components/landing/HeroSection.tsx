@@ -33,7 +33,6 @@ const HeroSection = () => {
 
   return (
     <section ref={ref} id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Parallax background image */}
       <motion.img
         src={heroBg}
         alt="Aangan courtyard exterior"
@@ -42,60 +41,55 @@ const HeroSection = () => {
         width={1920}
         height={1080}
       />
-
-      {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/50" />
 
-      {/* Fairy lights */}
       {fairyLights.map((light, i) => (
         <FairyLight key={i} {...light} />
       ))}
 
-      {/* Content with parallax */}
       <motion.div
         style={{ y: textY, opacity }}
         className="relative z-10 text-center px-6 max-w-3xl mx-auto"
       >
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-amber font-sans text-sm md:text-base tracking-[0.3em] uppercase mb-6"
-        >
-          Your Neighborhood Aangan
-        </motion.p>
-
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium text-white leading-tight mb-6"
+          transition={{ duration: 1 }}
+          className="font-serif text-6xl md:text-8xl lg:text-9xl font-medium text-white leading-tight mb-4"
         >
-          Leave a Little Lighter.
+          Aangan
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-white/80 font-sans text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed"
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="font-serif italic text-white/90 text-2xl md:text-3xl mb-4"
         >
-          Your neighborhood 'Aangan.' No dressing up. Just you and the stars.
+          Leave a Little Lighter.
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-white/70 font-sans text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed"
+        >
+          Your neighborhood courtyard. No dressing up. Just you and the stars.
         </motion.p>
 
         <motion.a
           href="#menu"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="inline-block bg-primary text-primary-foreground font-sans font-semibold px-10 py-4 rounded-full text-lg hover:bg-secondary hover:text-secondary-foreground transition-colors duration-300"
+          transition={{ duration: 0.8, delay: 0.9 }}
+          className="inline-block bg-primary text-primary-foreground font-sans font-semibold px-10 py-4 rounded-full text-lg hover:bg-primary-foreground hover:text-primary transition-colors duration-300"
           style={{ boxShadow: "0 4px 24px hsl(var(--primary) / 0.4)" }}
         >
           Vibe with Us — Menu & Hours ↓
         </motion.a>
       </motion.div>
 
-      {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
         animate={{ y: [0, 10, 0] }}
