@@ -39,7 +39,7 @@ const CommunitySection = () => {
           <p className="font-sans text-sm tracking-[0.25em] uppercase text-primary mb-4">The Hood</p>
           <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-4">Community Over Commerce</h2>
           <p className="font-sans text-muted-foreground text-base md:text-lg max-w-xl mx-auto leading-relaxed">
-            Your neighborhood cafe in Tier 1 & 2 cities. We value community over commerce.
+            Your neighborhood cafe. We value community over commerce.
           </p>
         </motion.div>
 
@@ -59,7 +59,7 @@ const CommunitySection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
-          className="rounded-2xl overflow-hidden mb-14"
+          className="rounded-2xl overflow-hidden mb-10"
         >
           <img
             src={communityBg}
@@ -71,7 +71,7 @@ const CommunitySection = () => {
           />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-10">
           {communityFeatures.map((feat, i) => (
             <motion.div
               key={feat.title}
@@ -100,6 +100,31 @@ const CommunitySection = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Additional community images grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7 }}
+          className="grid grid-cols-2 md:grid-cols-3 gap-3"
+        >
+          {[communityGames, communityLibrary, communityHerbs, communityBg, communityGames, communityLibrary].map((img, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.3 }}
+              className="rounded-xl overflow-hidden aspect-square"
+            >
+              <img
+                src={img}
+                alt={`Community moment ${i + 1}`}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

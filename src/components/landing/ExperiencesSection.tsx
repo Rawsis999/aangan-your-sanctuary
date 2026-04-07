@@ -23,7 +23,7 @@ const experiences = [
   {
     image: mittiImg,
     title: "Mitti Corner",
-    description: "A dedicated patch of earth to put your feet down and ground yourself. Earthing, the way our grandparents did it.",
+    description: "A pottery experience — buy by the hour, all resources provided. Shape clay, unplug your mind, and take home what you create.",
   },
 ];
 

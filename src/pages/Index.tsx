@@ -1,16 +1,25 @@
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import SplashScreen from "@/components/landing/SplashScreen";
 import Navbar from "@/components/landing/Navbar";
 import HeroSection from "@/components/landing/HeroSection";
 import PhilosophySection from "@/components/landing/PhilosophySection";
 import ExperiencesSection from "@/components/landing/ExperiencesSection";
 import MenuSection from "@/components/landing/MenuSection";
 import SocialFeedSection from "@/components/landing/SocialFeedSection";
+import TestimonialsSection from "@/components/landing/TestimonialsSection";
 import CommunitySection from "@/components/landing/CommunitySection";
 import ReservationSection from "@/components/landing/ReservationSection";
 import FooterSection from "@/components/landing/FooterSection";
 
 const Index = () => {
+  const [splashDone, setSplashDone] = useState(false);
+
   return (
     <>
+      <AnimatePresence>
+        {!splashDone && <SplashScreen onComplete={() => setSplashDone(true)} />}
+      </AnimatePresence>
       <Navbar />
       <main className="overflow-x-hidden">
         <HeroSection />
@@ -18,6 +27,7 @@ const Index = () => {
         <ExperiencesSection />
         <MenuSection />
         <SocialFeedSection />
+        <TestimonialsSection />
         <CommunitySection />
         <ReservationSection />
         <FooterSection />
