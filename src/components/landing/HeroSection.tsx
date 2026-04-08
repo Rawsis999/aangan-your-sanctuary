@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { ChevronDown } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const FairyLight = ({ delay, left, top }: { delay: number; left: string; top: string }) => (
@@ -9,6 +10,18 @@ const FairyLight = ({ delay, left, top }: { delay: number; left: string; top: st
     animate={{ opacity: [0.2, 1, 0.2] }}
     transition={{ duration: 2.5 + delay, repeat: Infinity, ease: "easeInOut" }}
   />
+);
+
+const FloatingLeaf = ({ delay, left }: { delay: number; left: string }) => (
+  <motion.div
+    className="absolute text-foliage/30 text-2xl pointer-events-none"
+    style={{ left }}
+    initial={{ top: "-5%", rotate: 0, opacity: 0 }}
+    animate={{ top: "105%", rotate: 360, opacity: [0, 0.6, 0.6, 0] }}
+    transition={{ duration: 12 + delay * 3, repeat: Infinity, delay: delay * 2, ease: "linear" }}
+  >
+    🍃
+  </motion.div>
 );
 
 const fairyLights = [
@@ -22,6 +35,14 @@ const fairyLights = [
   { delay: 0.4, left: "70%", top: "22%" },
   { delay: 1.0, left: "50%", top: "18%" },
   { delay: 2.0, left: "35%", top: "28%" },
+];
+
+const floatingLeaves = [
+  { delay: 0, left: "15%" },
+  { delay: 1.5, left: "45%" },
+  { delay: 3, left: "75%" },
+  { delay: 0.8, left: "88%" },
+  { delay: 2.2, left: "30%" },
 ];
 
 const HeroSection = () => {
@@ -45,6 +66,34 @@ const HeroSection = () => {
 
       {fairyLights.map((light, i) => (
         <FairyLight key={i} {...light} />
+      ))}
+
+      {floatingLeaves.map((leaf, i) => (
+        <FloatingLeaf key={`leaf-${i}`} {...leaf} />
+      ))}
+
+      {/* Animated firefly particles */}
+      {[...Array(6)].map((_, i) => (
+        <motion.div
+          key={`firefly-${i}`}
+          className="absolute w-1 h-1 rounded-full bg-amber"
+          style={{
+            left: `${20 + i * 12}%`,
+            top: `${30 + (i % 3) * 20}%`,
+            boxShadow: "0 0 8px 2px hsl(var(--amber-glow) / 0.4)",
+          }}
+          animate={{
+            x: [0, 30 * (i % 2 === 0 ? 1 : -1), -20, 0],
+            y: [0, -40, 20, 0],
+            opacity: [0, 0.8, 0.3, 0],
+          }}
+          transition={{
+            duration: 6 + i * 1.5,
+            repeat: Infinity,
+            delay: i * 1.2,
+            ease: "easeInOut",
+          }}
+        />
       ))}
 
       <motion.div
@@ -75,7 +124,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-white/70 font-sans text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed"
         >
-          Your neighborhood courtyard. No dressing up. Just you and the stars.
+          Your neighborhood casual dining. No dressing up. Just you and the stars.
         </motion.p>
 
         <motion.a
@@ -84,21 +133,23 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.9 }}
           className="inline-block bg-primary text-primary-foreground font-sans font-semibold px-10 py-4 rounded-full text-lg hover:bg-primary-foreground hover:text-primary transition-colors duration-300"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.97 }}
           style={{ boxShadow: "0 4px 24px hsl(var(--primary) / 0.4)" }}
         >
           Vibe with Us — Menu & Hours ↓
         </motion.a>
       </motion.div>
 
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      {/* Down arrow instead of scroll mouse */}
+      <motion.a
+        href="#philosophy"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 hover:text-white transition-colors"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <div className="w-6 h-10 rounded-full border-2 border-white/40 flex items-start justify-center p-1.5">
-          <div className="w-1.5 h-3 rounded-full bg-white/60" />
-        </div>
-      </motion.div>
+        <ChevronDown className="w-8 h-8" />
+      </motion.a>
     </section>
   );
 };
