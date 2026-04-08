@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import aanganLogo from "@/assets/aangan-logo.png";
+import aanganLogo from "@/assets/aangan-logo-wide.png";
 
 interface SplashScreenProps {
   onComplete: () => void;
@@ -18,7 +18,7 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
         <motion.img
           src={aanganLogo}
           alt="Aangan"
-          className="h-24 md:h-32 w-auto"
+          className="h-16 md:h-20 w-auto"
           initial={{ opacity: 0, scale: 0.7 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -35,7 +35,7 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.0 }}
         >
-          Your Neighborhood Aangan
+          Your Backyard Retreat
         </motion.p>
       </div>
     </motion.div>

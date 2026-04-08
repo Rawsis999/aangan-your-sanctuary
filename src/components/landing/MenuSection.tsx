@@ -1,44 +1,104 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Lightbox from "./Lightbox";
 
-const menuCategories = [
+import menuCholeKulche from "@/assets/menu-chole-kulche.jpg";
+import menuButterChickenNachos from "@/assets/menu-butter-chicken-nachos.jpg";
+import menuSamosaTacos from "@/assets/menu-samosa-tacos.jpg";
+import menuPaneerWrap from "@/assets/menu-paneer-wrap.jpg";
+import menuVadaPav from "@/assets/menu-vada-pav.jpg";
+import menuMakhana from "@/assets/menu-makhana.jpg";
+import menuCheeseFries from "@/assets/menu-cheese-fries.jpg";
+import menuCornRibs from "@/assets/menu-corn-ribs.jpg";
+import menuChaiLatte from "@/assets/menu-chai-latte.jpg";
+import menuGuavaFizz from "@/assets/menu-guava-fizz.jpg";
+import menuBanta from "@/assets/menu-banta.jpg";
+import menuRoseMilk from "@/assets/menu-rose-milk.jpg";
+import menuColdBrew from "@/assets/menu-cold-brew.jpg";
+import menuNutellaParatha from "@/assets/menu-nutella-paratha.jpg";
+import menuChaimisu from "@/assets/menu-chaimisu.jpg";
+import menuGulabCheesecake from "@/assets/menu-gulab-cheesecake.jpg";
+
+interface MenuItem {
+  name: string;
+  desc: string;
+  price: string;
+  image: string;
+}
+
+const menuCategories: { key: string; title: string; icon: string; tagline: string; items: MenuItem[] }[] = [
+  {
+    key: "remix",
+    title: "The Remix Lab",
+    icon: "🌯",
+    tagline: "Indian street soul meets modern handheld comfort.",
+    items: [
+      { name: "Chole Kulche Sliders", desc: "Our signature \"must-try.\" Two mini, butter-toasted kulcha buns stuffed with spicy Amritsari chole, pickled beetroots, and a drizzle of mint-yogurt foam.", price: "₹249", image: menuCholeKulche },
+      { name: "Butter Chicken \"Nachos\"", desc: "Crispy, hand-broken khakra chips topped with smoky shredded butter chicken, melted mozzarella, and a heavy drizzle of makhani gravy.", price: "₹329", image: menuButterChickenNachos },
+      { name: "Samosa Smash Tacos", desc: "A mini paratha \"taco\" shell filled with a smashed potato samosa, sweet tamarind chutney, pomegranate pearls, and crunchy sev.", price: "₹199", image: menuSamosaTacos },
+      { name: "Paneer Pesto Wrap", desc: "Charred paneer tikka tossed in a fresh basil-coriander pesto, wrapped in a whole-wheat tortilla with crunchy bell peppers.", price: "₹279", image: menuPaneerWrap },
+      { name: "Vada Pav Poppers", desc: "Bite-sized potato vada balls with a molten cheese center, served with a spicy garlic-peanut dry chutney and soft slider buns.", price: "₹199", image: menuVadaPav },
+    ],
+  },
+  {
+    key: "sides",
+    title: "The Side Hustle",
+    icon: "🍟",
+    tagline: "Small plates for long conversations.",
+    items: [
+      { name: "Peri-Peri Makhana", desc: "Large, roasted lotus seeds tossed in a fiery peri-peri and dry mango powder mix. The \"Unbothered\" healthy snack.", price: "₹149", image: menuMakhana },
+      { name: "Masala Cheese Fries", desc: "Skin-on fries dusted with a secret \"Chaat-Masala\" blend and smothered in a warm, spicy cheese sauce.", price: "₹199", image: menuCheeseFries },
+      { name: "Gunpowder Corn Ribs", desc: "Char-grilled corn ribs rubbed with South Indian \"podi\" (gunpowder) spice and lime butter.", price: "₹229", image: menuCornRibs },
+    ],
+  },
   {
     key: "sips",
-    title: "Sips",
-    icon: "☕",
+    title: "Liquid Chill",
+    icon: "🥤",
+    tagline: "Aesthetic, refreshing, and highly \"post-able.\"",
     items: [
-      { name: "Cutting Chai Flask", desc: "Classic kadak chai in a flask — pour and share", price: "₹80" },
-      { name: "Moonlight Milk", desc: "Warm turmeric & ashwagandha in moonlit ceramic", price: "₹120" },
-      { name: "Kokum Sherbet", desc: "Tangy, cooling Konkan classic with black salt", price: "₹100" },
+      { name: "Iced Masala Chai Latte", desc: "Our Nitro-style cold chai. Strong cardamom tea frothed with chilled milk and served over coffee-infused ice cubes.", price: "₹179", image: menuChaiLatte },
+      { name: "Pink Guava Chilli Fizz", desc: "A vibrant pink guava nectar spiked with black salt and green chili, topped with sparkling soda and a tajin rim.", price: "₹199", image: menuGuavaFizz },
+      { name: "The OG Banta (Remix)", desc: "Lemon-ginger soda served in a vintage bottle, spiked with a dash of roasted cumin and fresh mint leaves.", price: "₹129", image: menuBanta },
+      { name: "Rose Milk Cloud", desc: "A nostalgic rose-syrup milkshake topped with a light vanilla cold foam and dried edible rose petals.", price: "₹169", image: menuRoseMilk },
+      { name: "Desi Cold Brew", desc: "16-hour steeped coffee concentrate with a hint of dark jaggery and a cardamom finish.", price: "₹199", image: menuColdBrew },
     ],
   },
   {
-    key: "bites",
-    title: "Bites",
-    icon: "🍽️",
+    key: "desserts",
+    title: "Sweet Retreats",
+    icon: "🍰",
+    tagline: "The perfect end to the vibe.",
     items: [
-      { name: "Kulcha Sliders", desc: "Mini kulchas with aloo or paneer tikka filling", price: "₹180" },
-      { name: '"Nani" Samosa Basket', desc: "Crispy pea-potato samosas with chutneys trio", price: "₹120" },
-      { name: "Masala Maggi Jar", desc: "Spiced Maggi in a jar with cheese toast dippers", price: "₹150" },
-    ],
-  },
-  {
-    key: "potli",
-    title: "The Potli",
-    icon: "👝",
-    items: [
-      { name: "Grab-and-Go Bundle", desc: "Kathi roll, seasonal fruit, masala makhana & a drink — all in a reusable cloth potli. Perfect for picnics.", price: "₹350" },
+      { name: "Nutella Paratha Roll", desc: "A hot, flaky, multi-layered paratha rolled around warm Nutella and topped with crushed toasted hazelnuts.", price: "₹199", image: menuNutellaParatha },
+      { name: "Chai-misu", desc: "Our version of the Tiramisu, using Parle-G biscuits soaked in strong masala chai, layered with creamy whipped mascarpone.", price: "₹249", image: menuChaimisu },
+      { name: "Gulab Jamun Cheesecake", desc: "Individual cheesecake jars with a base of crushed Graham crackers and a heart of warm, syrup-soaked gulab jamun.", price: "₹279", image: menuGulabCheesecake },
     ],
   },
 ];
 
 const MenuSection = () => {
-  const [activeTab, setActiveTab] = useState("sips");
+  const [activeTab, setActiveTab] = useState("remix");
   const activeCategory = menuCategories.find((c) => c.key === activeTab)!;
+
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const openLightbox = useCallback((index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  }, []);
+
+  const lightboxItems = activeCategory.items.map((item) => ({
+    image: item.image,
+    title: item.name,
+    description: item.desc,
+    price: item.price,
+  }));
 
   return (
     <section id="menu" className="relative py-24 md:py-32 bg-background overflow-hidden">
-      <div className="relative z-10 max-w-3xl mx-auto px-6">
+      <div className="relative z-10 max-w-4xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -52,12 +112,12 @@ const MenuSection = () => {
         </motion.div>
 
         {/* Tab bar */}
-        <div className="flex justify-center gap-3 mb-10">
+        <div className="flex justify-center gap-2 mb-10 flex-wrap">
           {menuCategories.map((cat) => (
             <button
               key={cat.key}
               onClick={() => setActiveTab(cat.key)}
-              className={`font-sans text-sm font-medium px-6 py-3 rounded-full transition-colors duration-300 ${
+              className={`font-sans text-sm font-medium px-5 py-3 rounded-full transition-colors duration-300 ${
                 activeTab === cat.key
                   ? "bg-primary text-primary-foreground"
                   : "bg-card text-muted-foreground hover:bg-muted border border-border"
@@ -77,27 +137,54 @@ const MenuSection = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.35 }}
-            className="bg-card border border-border rounded-2xl p-6 md:p-8"
           >
-            <div className="text-center mb-6">
-              <span className="text-3xl">{activeCategory.icon}</span>
-              <h3 className="font-serif text-2xl text-foreground mt-2">{activeCategory.title}</h3>
-            </div>
+            <p className="text-center font-sans text-muted-foreground text-sm italic mb-6">{activeCategory.tagline}</p>
 
-            <div className="space-y-5">
-              {activeCategory.items.map((item) => (
-                <div key={item.name} className="border-b border-border/50 pb-4 last:border-0">
-                  <div className="flex justify-between items-start mb-1">
-                    <h4 className="font-sans font-semibold text-foreground text-base">{item.name}</h4>
-                    <span className="font-sans text-primary font-medium text-base ml-3 shrink-0">{item.price}</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {activeCategory.items.map((item, i) => (
+                <motion.div
+                  key={item.name}
+                  whileHover={{ y: -4, boxShadow: "0 8px 30px hsl(var(--foreground) / 0.08)" }}
+                  transition={{ duration: 0.2 }}
+                  className="bg-card border border-border rounded-2xl overflow-hidden cursor-pointer group"
+                  onClick={() => openLightbox(i)}
+                >
+                  <div className="h-40 overflow-hidden">
+                    <motion.img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      loading="lazy"
+                      width={640}
+                      height={640}
+                    />
                   </div>
-                  <p className="font-sans text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
-                </div>
+                  <div className="p-5">
+                    <div className="flex justify-between items-start mb-1.5">
+                      <h4 className="font-sans font-semibold text-foreground text-base">{item.name}</h4>
+                      <span className="font-sans text-primary font-medium text-sm ml-2 shrink-0">{item.price}</span>
+                    </div>
+                    <p className="font-sans text-muted-foreground text-xs leading-relaxed line-clamp-2">{item.desc}</p>
+                  </div>
+                </motion.div>
               ))}
             </div>
+
+            <p className="text-center font-sans text-muted-foreground/50 text-xs mt-8 italic">
+              Everything is designed to be eaten with one hand while the other holds your phone — because the vibe is too good not to share.
+            </p>
           </motion.div>
         </AnimatePresence>
       </div>
+
+      <Lightbox
+        items={lightboxItems}
+        currentIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        onNext={() => setLightboxIndex((prev) => (prev + 1) % activeCategory.items.length)}
+        onPrev={() => setLightboxIndex((prev) => (prev - 1 + activeCategory.items.length) % activeCategory.items.length)}
+      />
     </section>
   );
 };

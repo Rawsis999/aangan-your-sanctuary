@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import aanganLogo from "@/assets/aangan-logo.png";
+import aanganLogo from "@/assets/aangan-logo-wide.png";
 
 const navLinks = [
   { label: "Home", href: "#hero" },
   { label: "About", href: "#philosophy" },
+  { label: "Activities", href: "#experiences" },
   { label: "Menu", href: "#menu" },
   { label: "Reservation", href: "#reservation" },
 ];
@@ -38,41 +39,30 @@ const Navbar = () => {
             <img
               src={aanganLogo}
               alt="Aangan"
-              className="h-12 md:h-14 w-auto"
+              className="h-10 md:h-12 w-auto"
             />
           </a>
 
+          {/* Animated hamburger → X */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="relative z-50 flex flex-col justify-center items-center w-10 h-10 gap-1.5"
             aria-label="Toggle menu"
           >
-            <span
-              className={`block w-7 h-0.5 transition-all duration-300 ${
-                menuOpen
-                  ? "rotate-45 translate-y-2 bg-cream"
-                  : scrolled
-                  ? "bg-foreground"
-                  : "bg-cream"
-              }`}
+            <motion.span
+              animate={menuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className={`block w-7 h-0.5 origin-center ${menuOpen ? "bg-cream" : scrolled ? "bg-foreground" : "bg-cream"}`}
             />
-            <span
-              className={`block w-7 h-0.5 transition-all duration-300 ${
-                menuOpen
-                  ? "opacity-0"
-                  : scrolled
-                  ? "bg-foreground"
-                  : "bg-cream"
-              }`}
+            <motion.span
+              animate={menuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+              transition={{ duration: 0.2 }}
+              className={`block w-7 h-0.5 ${scrolled ? "bg-foreground" : "bg-cream"}`}
             />
-            <span
-              className={`block w-7 h-0.5 transition-all duration-300 ${
-                menuOpen
-                  ? "-rotate-45 -translate-y-2 bg-cream"
-                  : scrolled
-                  ? "bg-foreground"
-                  : "bg-cream"
-              }`}
+            <motion.span
+              animate={menuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className={`block w-7 h-0.5 origin-center ${menuOpen ? "bg-cream" : scrolled ? "bg-foreground" : "bg-cream"}`}
             />
           </button>
         </div>
@@ -92,7 +82,7 @@ const Navbar = () => {
         )}
       </AnimatePresence>
 
-      {/* Side panel - less than half screen */}
+      {/* Side panel */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -102,7 +92,6 @@ const Navbar = () => {
             transition={{ type: "spring", damping: 28, stiffness: 300 }}
             className="fixed top-0 right-0 z-50 h-full w-[280px] sm:w-[320px] bg-mud shadow-2xl flex flex-col"
           >
-            {/* Close button area */}
             <div className="flex justify-end p-6">
               <button
                 onClick={() => setMenuOpen(false)}
@@ -132,7 +121,12 @@ const Navbar = () => {
               ))}
             </nav>
 
-            <div className="mt-auto p-8">
+            {/* Footer links */}
+            <div className="mt-auto p-8 space-y-3">
+              <div className="flex flex-col gap-2">
+                <a href="#privacy" onClick={() => setMenuOpen(false)} className="font-sans text-cream/40 text-xs hover:text-cream/70 transition-colors">Privacy Policy</a>
+                <a href="#terms" onClick={() => setMenuOpen(false)} className="font-sans text-cream/40 text-xs hover:text-cream/70 transition-colors">Terms & Conditions</a>
+              </div>
               <p className="font-sans text-cream/30 text-xs">© 2026 Aangan</p>
             </div>
           </motion.div>
