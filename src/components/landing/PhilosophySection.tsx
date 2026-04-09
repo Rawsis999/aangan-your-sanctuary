@@ -42,6 +42,7 @@ const PhilosophySection = () => {
             src={philosophyBg}
             alt="People relaxing in a warm courtyard"
             className="w-full h-[300px] md:h-[420px] object-cover"
+            style={{ objectPosition: "center bottom" }}
             loading="lazy"
             width={1280}
             height={720}
