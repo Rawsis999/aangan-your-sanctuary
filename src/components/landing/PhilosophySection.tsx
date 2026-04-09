@@ -5,7 +5,7 @@ import philosophyBg from "@/assets/philosophy-bg.jpg";
 const PhilosophySection = () => {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+  const imgY = useTransform(scrollYProgress, [0, 1], ["-5%", "10%"]);
 
   return (
     <section ref={ref} id="philosophy" className="relative py-24 md:py-32 bg-background overflow-hidden">
