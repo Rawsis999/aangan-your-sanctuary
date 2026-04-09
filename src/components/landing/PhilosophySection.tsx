@@ -41,8 +41,15 @@ const PhilosophySection = () => {
           <motion.img
             src={philosophyBg}
             alt="People relaxing in a warm courtyard"
-            className="w-full h-[300px] md:h-[420px] object-cover object-top"
-            style={{ transform: "translateY(-20px)" }}
+            className="w-full h-[300px] md:h-[420px] object-cover object-center flex-grow-0"
+            style={{
+              transform: "translateY(-20px)",
+              minHeight: "155px",
+              maxWidth: "121%",
+              height: "auto",
+              marginTop: "-81px",
+              marginBottom: "-210px"
+            }}
             loading="lazy"
             width={1280}
             height={720}
