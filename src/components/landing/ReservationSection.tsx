@@ -14,6 +14,12 @@ const timeSlots = [
   "10:00 PM", "10:30 PM", "11:00 PM", "11:30 PM",
 ];
 const partySizes = [1, 2, 3, 4, 5, 6, 7, 8];
+const activityAddons = [
+  { id: "none", label: "No Activity", price: "Free" },
+  { id: "pottery", label: "Pottery Session (Mitti Corner)", price: "₹350/hr" },
+  { id: "stargazing", label: "Stargazing Experience", price: "Included" },
+  { id: "picnic", label: "Rent-a-Picnic Kit", price: "₹599" },
+];
 
 const ReservationSection = () => {
   const [date, setDate] = useState<Date>();
@@ -21,6 +27,7 @@ const ReservationSection = () => {
   const [timeSlot, setTimeSlot] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [activityAddon, setActivityAddon] = useState("none");
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -58,6 +65,11 @@ const ReservationSection = () => {
             <p className="font-sans text-muted-foreground">
               {format(date!, "PPP")} at {timeSlot} • Party of {partySize}
             </p>
+            {activityAddon !== "none" && (
+              <p className="font-sans text-muted-foreground text-sm">
+                Activity: {activityAddons.find((a) => a.id === activityAddon)?.label}
+              </p>
+            )}
             <p className="font-sans text-muted-foreground text-sm mt-2">We'll send a confirmation to {phone}</p>
             <Button
               onClick={() => setSubmitted(false)}
@@ -150,6 +162,23 @@ const ReservationSection = () => {
                   </button>
                 ))}
               </div>
+            </div>
+
+            <div>
+              <label className="font-sans text-sm text-foreground mb-3 block">
+                🎨 Add Optional Activity (Optional)
+              </label>
+              <select
+                value={activityAddon}
+                onChange={(e) => setActivityAddon(e.target.value)}
+                className="w-full bg-card border border-border rounded-lg px-4 py-3 font-sans text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 cursor-pointer"
+              >
+                {activityAddons.map((addon) => (
+                  <option key={addon.id} value={addon.id}>
+                    {addon.label} — {addon.price}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div>
