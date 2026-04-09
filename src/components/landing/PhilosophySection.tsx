@@ -64,7 +64,14 @@ const PhilosophySection = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex justify-center"
         >
-          <div className="inline-flex items-center gap-3 bg-card border border-border rounded-full px-6 py-3">
+          <div
+            className="inline-flex items-center gap-3 bg-card border border-border rounded-full px-6 py-3"
+            style={{
+              borderColor: "rgba(231, 189, 168, 1)",
+              backgroundColor: "rgba(255, 244, 233, 1)",
+              borderWidth: "1px"
+            }}
+          >
             <span className="text-2xl">🌙</span>
             <div className="text-center">
               <p className="font-sans text-xs tracking-wider uppercase text-muted-foreground">Introvert Friendly</p>
