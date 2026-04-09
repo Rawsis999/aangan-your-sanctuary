@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import SplashScreen from "@/components/landing/SplashScreen";
-import RadialMenu from "@/components/landing/RadialMenu";
+import Navbar from "@/components/landing/Navbar";
 import CustomCursor from "@/components/landing/CustomCursor";
 import Chatbot from "@/components/landing/Chatbot";
 import HeroSection from "@/components/landing/HeroSection";
@@ -23,7 +23,7 @@ const Index = () => {
       <AnimatePresence>
         {!splashDone && <SplashScreen onComplete={() => setSplashDone(true)} />}
       </AnimatePresence>
-      <RadialMenu />
+      <Navbar />
       <Chatbot />
       <main className="overflow-x-hidden">
         <HeroSection />
