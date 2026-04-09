@@ -47,7 +47,8 @@ const Navbar = () => {
           <img
             src={aanganLogo}
             alt="Aangan"
-            className="h-10 md:h-12 w-auto"
+            className="h-10 md:h-12 w-auto self-stretch"
+            style={{ maxWidth: "210%", minHeight: "93px" }}
           />
         </a>
 
