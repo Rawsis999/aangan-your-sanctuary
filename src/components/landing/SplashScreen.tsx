@@ -19,7 +19,7 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
         <motion.img
           src={aanganLogo}
           alt="Aangan"
-          className="h-20 md:h-28 w-auto"
+          className="h-32 md:h-48 w-auto"
           initial={{ opacity: 0, scale: 0.7 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
