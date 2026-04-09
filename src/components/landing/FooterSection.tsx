@@ -11,12 +11,26 @@ const FooterSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8 }}
-          className="max-w-xl mx-auto px-6"
+          className="max-w-4xl mx-auto px-6"
         >
           <h2 className="font-serif text-3xl md:text-5xl text-cream mb-4">Find Your Nearest Aangan</h2>
           <p className="font-sans text-cream/60 mb-10 text-base">
             Come sit in the courtyard. We saved you a charpai.
           </p>
+
+          {/* Google Map Embed */}
+          <div className="mb-10 rounded-2xl overflow-hidden shadow-xl">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3503.5641903648336!2d77.22346!3d28.531731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1700000000000"
+              width="100%"
+              height="400"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full"
+            ></iframe>
+          </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
@@ -26,10 +40,12 @@ const FooterSection = () => {
               Book a Table
             </a>
             <a
-              href="#"
+              href="https://maps.google.com/?q=28.531731,77.223460"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block bg-cream text-foreground font-sans font-medium px-9 py-4 rounded-full text-base hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
             >
-              Join the Newsletter
+              Get Directions
             </a>
           </div>
         </motion.div>
