@@ -10,13 +10,11 @@ import menuVadaPav from "@/assets/menu-vada-pav.jpg";
 import menuMakhana from "@/assets/menu-makhana.jpg";
 import menuCheeseFries from "@/assets/menu-cheese-fries.jpg";
 import menuCornRibs from "@/assets/menu-corn-ribs.jpg";
-import menuChaiLatte from "@/assets/menu-chai-latte.jpg";
 import menuGuavaFizz from "@/assets/menu-guava-fizz.jpg";
 import menuBanta from "@/assets/menu-banta.jpg";
 import menuRoseMilk from "@/assets/menu-rose-milk.jpg";
 import menuColdBrew from "@/assets/menu-cold-brew.jpg";
 import menuNutellaParatha from "@/assets/menu-nutella-paratha.jpg";
-import menuChaimisu from "@/assets/menu-chaimisu.jpg";
 import menuGulabCheesecake from "@/assets/menu-gulab-cheesecake.jpg";
 
 interface MenuItem {
@@ -46,7 +44,7 @@ const menuCategories: { key: string; title: string; icon: string; tagline: strin
     icon: "🍟",
     tagline: "Small plates for long conversations.",
     items: [
-      { name: "Peri-Peri Makhana", desc: "Large, roasted lotus seeds tossed in a fiery peri-peri and dry mango powder mix. The \"Unbothered\" healthy snack.", price: "₹149", image: menuMakhana },
+      { name: "Peri-Peri Makhana", desc: "Large, popped lotus seeds tossed in a fiery peri-peri and dry mango powder mix. The \"Unbothered\" healthy snack.", price: "₹149", image: menuMakhana },
       { name: "Masala Cheese Fries", desc: "Skin-on fries dusted with a secret \"Chaat-Masala\" blend and smothered in a warm, spicy cheese sauce.", price: "₹199", image: menuCheeseFries },
       { name: "Gunpowder Corn Ribs", desc: "Char-grilled corn ribs rubbed with South Indian \"podi\" (gunpowder) spice and lime butter.", price: "₹229", image: menuCornRibs },
     ],
@@ -57,7 +55,6 @@ const menuCategories: { key: string; title: string; icon: string; tagline: strin
     icon: "🥤",
     tagline: "Aesthetic, refreshing, and highly \"post-able.\"",
     items: [
-      { name: "Iced Masala Chai Latte", desc: "Our Nitro-style cold chai. Strong cardamom tea frothed with chilled milk and served over coffee-infused ice cubes.", price: "₹179", image: menuChaiLatte },
       { name: "Pink Guava Chilli Fizz", desc: "A vibrant pink guava nectar spiked with black salt and green chili, topped with sparkling soda and a tajin rim.", price: "₹199", image: menuGuavaFizz },
       { name: "The OG Banta (Remix)", desc: "Lemon-ginger soda served in a vintage bottle, spiked with a dash of roasted cumin and fresh mint leaves.", price: "₹129", image: menuBanta },
       { name: "Rose Milk Cloud", desc: "A nostalgic rose-syrup milkshake topped with a light vanilla cold foam and dried edible rose petals.", price: "₹169", image: menuRoseMilk },
@@ -71,7 +68,6 @@ const menuCategories: { key: string; title: string; icon: string; tagline: strin
     tagline: "The perfect end to the vibe.",
     items: [
       { name: "Nutella Paratha Roll", desc: "A hot, flaky, multi-layered paratha rolled around warm Nutella and topped with crushed toasted hazelnuts.", price: "₹199", image: menuNutellaParatha },
-      { name: "Chai-misu", desc: "Our version of the Tiramisu, using Parle-G biscuits soaked in strong masala chai, layered with creamy whipped mascarpone.", price: "₹249", image: menuChaimisu },
       { name: "Gulab Jamun Cheesecake", desc: "Individual cheesecake jars with a base of crushed Graham crackers and a heart of warm, syrup-soaked gulab jamun.", price: "₹279", image: menuGulabCheesecake },
     ],
   },

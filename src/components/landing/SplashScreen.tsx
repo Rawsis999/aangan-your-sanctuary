@@ -8,7 +8,8 @@ interface SplashScreenProps {
 const SplashScreen = ({ onComplete }: SplashScreenProps) => {
   return (
     <motion.div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-mud"
+      className="fixed inset-0 z-[100] flex items-center justify-center"
+      style={{ background: "hsl(20 50% 10%)" }}
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{ duration: 0.6, delay: 2.2 }}
@@ -18,7 +19,7 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
         <motion.img
           src={aanganLogo}
           alt="Aangan"
-          className="h-16 md:h-20 w-auto"
+          className="h-20 md:h-28 w-auto"
           initial={{ opacity: 0, scale: 0.7 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}

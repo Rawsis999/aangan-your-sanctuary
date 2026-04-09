@@ -34,9 +34,6 @@ const galleryImages = [
   { src: communityBg, alt: "Courtyard overview" },
   { src: communityGames, alt: "Board game night" },
   { src: communityLibrary, alt: "Reading together" },
-  { src: communityHerbs, alt: "Fresh herbs" },
-  { src: communityBg, alt: "Evening at the courtyard" },
-  { src: communityGames, alt: "Carrom championship" },
 ];
 
 const CommunitySection = () => {
@@ -81,7 +78,6 @@ const CommunitySection = () => {
           "A place where you are allowed to look your worst and feel your best."
         </motion.p>
 
-        {/* Main community image */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -99,7 +95,6 @@ const CommunitySection = () => {
           />
         </motion.div>
 
-        {/* Feature cards - clickable with lightbox */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-10">
           {communityFeatures.map((feat, i) => (
             <motion.div
@@ -136,13 +131,13 @@ const CommunitySection = () => {
           ))}
         </div>
 
-        {/* Gallery grid - more images */}
+        {/* Reduced gallery - 6 images */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7 }}
-          className="grid grid-cols-3 md:grid-cols-3 gap-3"
+          className="grid grid-cols-3 gap-3"
         >
           {galleryImages.map((img, i) => (
             <motion.div

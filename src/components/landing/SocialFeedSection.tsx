@@ -40,28 +40,26 @@ const SocialFeedSection = () => {
             @aangan.official
           </p>
           <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-2">
-            Raw & Unfiltered
+            The Courtyard Chronicles
           </h2>
           <p className="font-sans text-muted-foreground text-base max-w-md mx-auto">
             No ring lights. No filters. Just real moments from the courtyard.
           </p>
         </motion.div>
 
-        {/* Auto-scrolling horizontal carousel */}
         <div
           ref={scrollRef}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           className="flex gap-3 overflow-x-hidden"
         >
-          {/* Duplicate items for infinite scroll */}
           {[...placeholders, ...placeholders].map((_, i) => (
             <div
               key={i}
               className="flex-shrink-0 w-64 h-64 md:w-72 md:h-72 bg-muted border border-border rounded-lg flex flex-col items-center justify-center gap-2 hover:bg-muted/80 transition-colors duration-200"
             >
               <Camera className="w-7 h-7 text-muted-foreground/40" />
-              <span className="font-sans text-xs text-muted-foreground/50">Image Here</span>
+              <span className="font-sans text-xs text-muted-foreground/50">Instagram Post</span>
             </div>
           ))}
         </div>
@@ -74,7 +72,7 @@ const SocialFeedSection = () => {
           className="text-center mt-12"
         >
           <a
-            href="https://instagram.com"
+            href="https://instagram.com/aangan.official"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 font-sans text-sm bg-primary text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-colors duration-300 rounded-full px-7 py-3.5"
