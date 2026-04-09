@@ -77,10 +77,11 @@ const Chatbot = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            initial={{ opacity: 0, scale: 0, originX: 1, originY: 1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0 }}
+            transition={{ type: "spring", damping: 20, stiffness: 400 }}
+            style={{ transformOrigin: "bottom right" }}
             className="fixed bottom-24 right-6 z-50 w-[340px] max-h-[480px] bg-card border border-border rounded-2xl shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
