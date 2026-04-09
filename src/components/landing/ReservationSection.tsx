@@ -7,7 +7,12 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 
-const timeSlots = ["5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM"];
+const timeSlots = [
+  "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM",
+  "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM",
+  "8:00 PM", "8:30 PM", "9:00 PM", "9:30 PM",
+  "10:00 PM", "10:30 PM", "11:00 PM", "11:30 PM",
+];
 const partySizes = [1, 2, 3, 4, 5, 6, 7, 8];
 
 const ReservationSection = () => {
@@ -38,7 +43,7 @@ const ReservationSection = () => {
           <p className="font-sans text-sm tracking-[0.25em] uppercase text-primary mb-4">Reserve a Spot</p>
           <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-3">Book Your Charpai</h2>
           <p className="font-sans text-muted-foreground text-base">
-            Come sit in the courtyard. We saved you a spot.
+            Come sit in the courtyard. We saved you a spot. <span className="font-handwritten text-lg text-primary">Open 4 PM – 11:30 PM</span>
           </p>
         </motion.div>
 
@@ -70,7 +75,6 @@ const ReservationSection = () => {
             onSubmit={handleSubmit}
             className="bg-background border border-border rounded-2xl p-8 space-y-6"
           >
-            {/* Name & Phone */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="font-sans text-sm text-foreground mb-2 block">Your Name</label>
@@ -96,9 +100,8 @@ const ReservationSection = () => {
               </div>
             </div>
 
-            {/* Date Picker */}
             <div>
-              <label className="font-sans text-sm text-foreground mb-2 block flex items-center gap-2">
+              <label className="font-sans text-sm text-foreground mb-2 flex items-center gap-2">
                 <CalendarIcon className="w-4 h-4 text-primary" /> Pick a Date
               </label>
               <Popover>
@@ -126,9 +129,8 @@ const ReservationSection = () => {
               </Popover>
             </div>
 
-            {/* Party Size */}
             <div>
-              <label className="font-sans text-sm text-foreground mb-3 block flex items-center gap-2">
+              <label className="font-sans text-sm text-foreground mb-3 flex items-center gap-2">
                 <Users className="w-4 h-4 text-primary" /> Party Size
               </label>
               <div className="flex flex-wrap gap-2">
@@ -150,9 +152,8 @@ const ReservationSection = () => {
               </div>
             </div>
 
-            {/* Time Slot */}
             <div>
-              <label className="font-sans text-sm text-foreground mb-3 block flex items-center gap-2">
+              <label className="font-sans text-sm text-foreground mb-3 flex items-center gap-2">
                 <Clock className="w-4 h-4 text-primary" /> Preferred Time
               </label>
               <div className="flex flex-wrap gap-2">

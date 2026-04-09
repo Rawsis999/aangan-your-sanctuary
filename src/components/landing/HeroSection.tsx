@@ -56,7 +56,7 @@ const HeroSection = () => {
     <section ref={ref} id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <motion.img
         src={heroBg}
-        alt="Aangan courtyard exterior"
+        alt="Aangan open-air bistro courtyard with fairy lights and stone archway in Shahpur Jat, New Delhi"
         className="absolute inset-0 w-full h-[120%] object-cover"
         style={{ y: bgY }}
         width={1920}
@@ -72,7 +72,6 @@ const HeroSection = () => {
         <FloatingLeaf key={`leaf-${i}`} {...leaf} />
       ))}
 
-      {/* Animated firefly particles */}
       {[...Array(6)].map((_, i) => (
         <motion.div
           key={`firefly-${i}`}
@@ -104,7 +103,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="font-serif text-6xl md:text-8xl lg:text-9xl font-medium text-white leading-tight mb-4"
+          className="font-serif text-6xl md:text-8xl lg:text-9xl font-medium text-cream leading-tight mb-4"
         >
           Aangan
         </motion.h1>
@@ -113,7 +112,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="font-serif italic text-white/90 text-2xl md:text-3xl mb-4"
+          className="font-serif italic text-cream/90 text-2xl md:text-3xl mb-4"
         >
           Leave a Little Lighter.
         </motion.p>
@@ -122,29 +121,37 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-white/70 font-sans text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed"
+          className="text-cream/70 font-sans text-base md:text-lg max-w-xl mx-auto mb-4 leading-relaxed"
         >
-          Your neighborhood casual dining. No dressing up. Just you and the stars.
+          Your backyard retreat. Shoes off. Stress off. Come as you are.
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.9 }}
+          className="font-handwritten text-cream/50 text-lg md:text-xl mb-10"
+        >
+          Shahpur Jat, New Delhi
         </motion.p>
 
         <motion.a
           href="#menu"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
+          transition={{ duration: 0.8, delay: 1.1 }}
           className="inline-block bg-primary text-primary-foreground font-sans font-semibold px-10 py-4 rounded-full text-lg hover:bg-primary-foreground hover:text-primary transition-colors duration-300"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
           style={{ boxShadow: "0 4px 24px hsl(var(--primary) / 0.4)" }}
         >
-          Vibe with Us — Menu & Hours ↓
+          Explore the Vibe ↓
         </motion.a>
       </motion.div>
 
-      {/* Down arrow instead of scroll mouse */}
       <motion.a
         href="#philosophy"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 hover:text-white transition-colors"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-cream/60 hover:text-cream transition-colors"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
