@@ -2,18 +2,34 @@ import { useState, useEffect } from "react";
 import aanganLogo from "@/assets/aangan-logo-wide.png";
 
 const navLinks = [
-  { label: "Home", href: "#hero" },
-  { label: "About", href: "#philosophy" },
-  { label: "Activities", href: "#experiences" },
-  { label: "Menu", href: "#menu" },
-  { label: "Reservation", href: "#reservation" },
+  { label: "Home", href: "#hero", id: "hero" },
+  { label: "About", href: "#philosophy", id: "philosophy" },
+  { label: "Activities", href: "#experiences", id: "experiences" },
+  { label: "Menu", href: "#menu", id: "menu" },
+  { label: "Reservation", href: "#reservation", id: "reservation" },
 ];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 60);
+
+      // Detect which section is in view
+      for (const link of navLinks) {
+        const element = document.getElementById(link.id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActiveSection(link.id);
+            break;
+          }
+        }
+      }
+    };
+
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -41,8 +57,10 @@ const Navbar = () => {
             <a
               key={link.label}
               href={link.href}
-              className={`font-serif text-sm transition-colors duration-200 hover:text-amber ${
-                scrolled ? "text-foreground" : "text-cream"
+              className={`font-sans text-sm font-medium transition-all duration-200 ${
+                activeSection === link.id
+                  ? "text-amber border-b-2 border-amber pb-1"
+                  : `hover:text-amber ${scrolled ? "text-foreground" : "text-cream"}`
               }`}
             >
               {link.label}
