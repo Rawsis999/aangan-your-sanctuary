@@ -65,12 +65,38 @@ const Chatbot = () => {
       {/* Floating trigger */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-xl flex items-center justify-center hover:shadow-2xl"
+        className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-xl flex items-center justify-center hover:shadow-2xl transition-colors duration-300 ${
+          isOpen
+            ? "bg-primary-foreground text-primary"
+            : "bg-primary text-primary-foreground"
+        }`}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         aria-label="Chat with us"
       >
-        {isOpen ? <X className="w-6 h-6" /> : <MessageCircle className="w-6 h-6" />}
+        <AnimatePresence mode="wait">
+          {isOpen ? (
+            <motion.div
+              key="close"
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: 90, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <X className="w-6 h-6" />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="chat"
+              initial={{ rotate: 90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: -90, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <MessageCircle className="w-6 h-6" />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.button>
 
       {/* Chat window */}
