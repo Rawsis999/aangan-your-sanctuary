@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 import aanganLogo from "@/assets/aangan-logo-wide.png";
 
 const navLinks = [
@@ -12,6 +13,7 @@ const navLinks = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -23,7 +25,6 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    // Use IntersectionObserver for section tracking (more performant)
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -43,6 +44,16 @@ const Navbar = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -61,8 +72,8 @@ const Navbar = () => {
           />
         </a>
 
-        {/* Navigation links */}
-        <div className="flex items-center gap-8">
+        {/* Desktop nav links */}
+        <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.label}
@@ -77,7 +88,38 @@ const Navbar = () => {
             </a>
           ))}
         </div>
+
+        {/* Mobile hamburger button */}
+        <button
+          className="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-primary/80 text-primary-foreground"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle menu"
+        >
+          {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
       </div>
+
+      {/* Mobile slide-in menu */}
+      {mobileOpen && (
+        <div
+          className="md:hidden fixed inset-0 top-16 z-40 bg-background/95 backdrop-blur-md flex flex-col items-center pt-10 gap-6 animate-in fade-in slide-in-from-top-2 duration-300"
+          onClick={() => setMobileOpen(false)}
+        >
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className={`font-sans text-lg font-medium transition-all duration-200 ${
+                activeSection === link.id
+                  ? "text-amber border-b-2 border-amber pb-1"
+                  : "text-foreground hover:text-amber"
+              }`}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      )}
     </nav>
   );
 };
