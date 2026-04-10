@@ -17,6 +17,9 @@ import menuColdBrew from "@/assets/menu-cold-brew.jpg";
 import menuNutellaParatha from "@/assets/menu-nutella-paratha.jpg";
 import menuGulabCheesecake from "@/assets/menu-gulab-cheesecake.jpg";
 import experiencePicnic from "@/assets/experience-picnic.jpg";
+import potliPotters from "@/assets/potli-potters.jpg";
+import potliDeeptalk from "@/assets/potli-deeptalk.jpg";
+import potliGroup from "@/assets/potli-group.jpg";
 
 interface MenuItem {
   name: string;
@@ -78,9 +81,9 @@ const menuCategories: { key: string; title: string; icon: string; tagline: strin
     icon: "🧺",
     tagline: "Eco-friendly baskets packed with memories and moments.",
     items: [
-      { name: "The Potter's Palette", desc: "Designed for those hitting the wheel or looking for a solo creative escape. Vada Pav Poppers + Peri-Peri Makhana. Aangan Shikanji in a chilled glass bottle. The \"Mud-Mitt\" Pack with biodegradable wipes, hand cream, mini A6 kraft sketchbook and charcoal pencil.", price: "Custom", image: experiencePicnic },
-      { name: "The Deep Talk Basket", desc: "Focused on deep connection and unhurried conversation. Amritsari Kulcha Sliders + Deconstructed Butter Chicken Dips with sourdough crostinis. A sharing carafe of Peach & Lemongrass Iced Tea. Aangan Unplugged conversation cards + borrowed Instax camera with 5 films.", price: "Custom", image: experiencePicnic },
-      { name: "The Group Unwind", desc: "The ultimate social kit for 3-4 friends. The \"Remix Board\" (massive platter of all snacks and sliders). 1-liter \"Bucket\" of Pink Guava Chilli Fizz with tajin-rimmed glass set. Unconventional playing cards + premium heavy-knit Aangan blanket for evening stargazing.", price: "Custom", image: experiencePicnic },
+      { name: "The Potter's Palette", desc: "Designed for those hitting the wheel or looking for a solo creative escape. Vada Pav Poppers + Peri-Peri Makhana. Aangan Shikanji in a chilled glass bottle. The \"Mud-Mitt\" Pack with biodegradable wipes, hand cream, mini A6 kraft sketchbook and charcoal pencil.", price: "Custom", image: potliPotters },
+      { name: "The Deep Talk Basket", desc: "Focused on deep connection and unhurried conversation. Amritsari Kulcha Sliders + Deconstructed Butter Chicken Dips with sourdough crostinis. A sharing carafe of Peach & Lemongrass Iced Tea. Aangan Unplugged conversation cards + borrowed Instax camera with 5 films.", price: "Custom", image: potliDeeptalk },
+      { name: "The Group Unwind", desc: "The ultimate social kit for 3-4 friends. The \"Remix Board\" (massive platter of all snacks and sliders). 1-liter \"Bucket\" of Pink Guava Chilli Fizz with tajin-rimmed glass set. Unconventional playing cards + premium heavy-knit Aangan blanket for evening stargazing.", price: "Custom", image: potliGroup },
     ],
   },
 ];
