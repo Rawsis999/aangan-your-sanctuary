@@ -90,7 +90,7 @@ const FooterSection = () => {
               <h4 className="font-sans text-cream/70 text-xs tracking-wider uppercase mb-4">Visit Us</h4>
               <div className="flex flex-col gap-2">
                 <p className="font-sans text-cream/50 text-sm">Shahpur Jat, New Delhi</p>
-                <p className="font-sans text-cream/50 text-sm">Open Daily: 4 PM – 11:30 PM</p>
+                <p className="font-sans text-cream/50 text-sm">Open Daily: 11 AM – 11:30 PM · Closed Mondays</p>
                 <p className="font-sans text-cream/50 text-sm">hello@aangan.cafe</p>
                 <p className="font-sans text-cream/50 text-sm">+91 98765 43210</p>
               </div>
