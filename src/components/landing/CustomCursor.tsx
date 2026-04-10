@@ -11,14 +11,11 @@ const CustomCursor = () => {
   useEffect(() => {
     const onMove = (e: MouseEvent) => {
       targetRef.current = { x: e.clientX, y: e.clientY };
-    };
-
-    const animate = () => {
-      setPos((prev) => ({
-        x: prev.x + (targetRef.current.x - prev.x) * 0.15,
-        y: prev.y + (targetRef.current.y - prev.y) * 0.15,
-      }));
-      rafRef.current = requestAnimationFrame(animate);
+      // Update position directly without requestAnimationFrame for better performance
+      setPos({
+        x: e.clientX,
+        y: e.clientY,
+      });
     };
 
     const onDown = () => setIsClicking(true);
@@ -40,12 +37,11 @@ const CustomCursor = () => {
 
     const onOut = () => setIsHovering(false);
 
-    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mousemove", onMove, { passive: true });
     window.addEventListener("mousedown", onDown);
     window.addEventListener("mouseup", onUp);
-    document.addEventListener("mouseover", onOver);
-    document.addEventListener("mouseout", onOut);
-    rafRef.current = requestAnimationFrame(animate);
+    document.addEventListener("mouseover", onOver, { passive: true });
+    document.addEventListener("mouseout", onOut, { passive: true });
 
     return () => {
       window.removeEventListener("mousemove", onMove);
@@ -53,7 +49,7 @@ const CustomCursor = () => {
       window.removeEventListener("mouseup", onUp);
       document.removeEventListener("mouseover", onOver);
       document.removeEventListener("mouseout", onOut);
-      cancelAnimationFrame(rafRef.current);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, []);
 
