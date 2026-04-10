@@ -5,6 +5,7 @@ import communityBg from "@/assets/community-bg.jpg";
 import communityGames from "@/assets/community-games.jpg";
 import communityHerbs from "@/assets/community-herbs.jpg";
 import communityLibrary from "@/assets/community-library.jpg";
+import communitySelfeesh from "@/assets/community-selfeesh.jpg";
 
 const communityFeatures = [
   {
@@ -32,7 +33,7 @@ const galleryImages = [
   { src: communityLibrary, alt: "Cozy community library" },
   { src: communityHerbs, alt: "Herb garden picking" },
   { src: communityBg, alt: "Courtyard overview" },
-  { src: communityGames, alt: "Board game night" },
+  { src: communitySelfeesh, alt: "Friends enjoying food together" },
   { src: communityLibrary, alt: "Reading together" },
 ];
 
