@@ -25,24 +25,17 @@ const FloatingLeaf = ({ delay, left }: { delay: number; left: string }) => (
 );
 
 const fairyLights = [
-  { delay: 0, left: "10%", top: "15%" },
-  { delay: 0.8, left: "25%", top: "8%" },
-  { delay: 1.5, left: "45%", top: "12%" },
-  { delay: 0.3, left: "65%", top: "6%" },
-  { delay: 1.2, left: "80%", top: "14%" },
-  { delay: 0.6, left: "90%", top: "20%" },
-  { delay: 1.8, left: "15%", top: "25%" },
-  { delay: 0.4, left: "70%", top: "22%" },
-  { delay: 1.0, left: "50%", top: "18%" },
-  { delay: 2.0, left: "35%", top: "28%" },
+  { delay: 0, left: "15%", top: "12%" },
+  { delay: 1.2, left: "45%", top: "8%" },
+  { delay: 0.8, left: "75%", top: "18%" },
+  { delay: 0.4, left: "30%", top: "22%" },
+  { delay: 1.6, left: "65%", top: "15%" },
 ];
 
 const floatingLeaves = [
-  { delay: 0, left: "15%" },
-  { delay: 1.5, left: "45%" },
-  { delay: 3, left: "75%" },
-  { delay: 0.8, left: "88%" },
-  { delay: 2.2, left: "30%" },
+  { delay: 0, left: "20%" },
+  { delay: 2, left: "60%" },
+  { delay: 3.5, left: "80%" },
 ];
 
 const HeroSection = () => {
@@ -72,13 +65,13 @@ const HeroSection = () => {
         <FloatingLeaf key={`leaf-${i}`} {...leaf} />
       ))}
 
-      {[...Array(6)].map((_, i) => (
+      {[...Array(3)].map((_, i) => (
         <motion.div
           key={`firefly-${i}`}
           className="absolute w-1 h-1 rounded-full bg-amber"
           style={{
-            left: `${20 + i * 12}%`,
-            top: `${30 + (i % 3) * 20}%`,
+            left: `${25 + i * 25}%`,
+            top: `${35 + (i % 2) * 15}%`,
             boxShadow: "0 0 8px 2px hsl(var(--amber-glow) / 0.4)",
           }}
           animate={{

@@ -25,12 +25,18 @@ const SocialFeedSection = () => {
     if (!el) return;
     let animId: number;
     let scrollPos = 0;
+    let frameCount = 0;
 
     const animate = () => {
       if (!isPaused && el) {
-        scrollPos += 0.5;
-        if (scrollPos >= el.scrollWidth / 2) scrollPos = 0;
-        el.scrollLeft = scrollPos;
+        // Only update every 2 frames to reduce repaints
+        frameCount++;
+        if (frameCount >= 2) {
+          scrollPos += 0.5;
+          if (scrollPos >= el.scrollWidth / 2) scrollPos = 0;
+          el.scrollLeft = scrollPos;
+          frameCount = 0;
+        }
       }
       animId = requestAnimationFrame(animate);
     };
