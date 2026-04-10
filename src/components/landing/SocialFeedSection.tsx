@@ -76,7 +76,7 @@ const SocialFeedSection = () => {
               key={i}
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
-              className="flex-shrink-0 w-64 h-64 md:w-72 md:h-72 rounded-lg overflow-hidden border border-border cursor-pointer group"
+              className="flex-shrink-0 w-64 h-64 md:w-72 md:h-72 rounded-lg overflow-hidden border border-border cursor-pointer group relative"
             >
               <img
                 src={post.image}
@@ -86,7 +86,6 @@ const SocialFeedSection = () => {
                 width={320}
                 height={320}
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
             </motion.div>
           ))}
         </div>
