@@ -1,8 +1,20 @@
 import { motion } from "framer-motion";
-import { Camera } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import communityBg from "@/assets/community-bg.jpg";
+import communityGames from "@/assets/community-games.jpg";
+import communityHerbs from "@/assets/community-herbs.jpg";
+import communityLibrary from "@/assets/community-library.jpg";
 
-const placeholders = Array.from({ length: 12 });
+const instagramFeed = [
+  { image: communityBg, alt: "Courtyard overview" },
+  { image: communityGames, alt: "Friends playing board games" },
+  { image: communityLibrary, alt: "Cozy community library" },
+  { image: communityHerbs, alt: "Herb garden picking" },
+  { image: communityBg, alt: "Evening at the courtyard" },
+  { image: communityGames, alt: "Board game night" },
+  { image: communityLibrary, alt: "Reading together" },
+  { image: communityHerbs, alt: "Fresh herbs from the garden" },
+];
 
 const SocialFeedSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -53,14 +65,23 @@ const SocialFeedSection = () => {
           onMouseLeave={() => setIsPaused(false)}
           className="flex gap-3 overflow-x-hidden"
         >
-          {[...placeholders, ...placeholders].map((_, i) => (
-            <div
+          {[...instagramFeed, ...instagramFeed].map((post, i) => (
+            <motion.div
               key={i}
-              className="flex-shrink-0 w-64 h-64 md:w-72 md:h-72 bg-muted border border-border rounded-lg flex flex-col items-center justify-center gap-2 hover:bg-muted/80 transition-colors duration-200"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+              className="flex-shrink-0 w-64 h-64 md:w-72 md:h-72 rounded-lg overflow-hidden border border-border cursor-pointer group"
             >
-              <Camera className="w-7 h-7 text-muted-foreground/40" />
-              <span className="font-sans text-xs text-muted-foreground/50">Instagram Post</span>
-            </div>
+              <img
+                src={post.image}
+                alt={post.alt}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                width={320}
+                height={320}
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+            </motion.div>
           ))}
         </div>
 
