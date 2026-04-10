@@ -3,15 +3,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send } from "lucide-react";
 
 const faqData: Record<string, string> = {
-  pottery: "🏺 Our Mitti Corner is open daily from 4 PM–10 PM. It's ₹350/hour with all resources provided. Walk-ins welcome, but weekends fill up fast — reserve via our booking section!",
+  pottery: "🏺 Our Mitti Corner is open daily from 11 AM–10 PM (closed Mondays). It's ₹350/hour with all resources provided. Walk-ins welcome, but weekends fill up fast — reserve via our booking section!",
   "mitti corner": "🏺 Mitti Corner is our pottery experience — buy by the hour (₹350/hr), all materials included. Shape clay, unplug, and take home what you create!",
   location: "📍 We're at Shahpur Jat, New Delhi. Look for the terracotta archway with the hanging lantern — you can't miss it!",
   address: "📍 We're at Shahpur Jat, New Delhi. Look for the terracotta archway!",
-  timing: "🕓 We're open daily from 4:00 PM to 11:30 PM. Come early for golden-hour vibes, stay late for stargazing!",
-  hours: "🕓 Open daily 4:00 PM – 11:30 PM. Kitchen closes at 11:00 PM.",
-  time: "🕓 Open daily 4:00 PM – 11:30 PM. Kitchen closes at 11:00 PM.",
+  timing: "🕓 We're open 11:00 AM to 11:30 PM, closed on Mondays. Come early for a chill lunch, stay late for stargazing!",
+  hours: "🕓 Open 11:00 AM – 11:30 PM daily. Closed Mondays. Kitchen closes at 11:00 PM.",
+  time: "🕓 Open 11:00 AM – 11:30 PM daily. Closed Mondays. Kitchen closes at 11:00 PM.",
   reservation: "📅 You can book directly on our site — scroll down to the 'Book Your Charpai' section. We accept parties of 1–8!",
-  book: "📅 Head to the reservation section on this page! Pick a date, time (4 PM–11:30 PM), and party size.",
+  book: "📅 Head to the reservation section on this page! Pick a date, time (11 AM–11:30 PM), and party size. We're closed on Mondays.",
   menu: "🌯 Our menu features The Remix Lab (main bites), The Side Hustle (snacks), Liquid Chill (drinks), and Sweet Retreats (desserts). All designed to be eaten with one hand!",
   food: "🍽️ We serve remixed Indian street food — Chole Kulche Sliders, Samosa Smash Tacos, Butter Chicken Nachos, and more. Check the Menu section!",
   stargazing: "🌟 Our Stargazing Station runs weekly Dark Sky Moments where lights go out and stars come alive. Bring a blanket, lie on a charpai, and enjoy!",
