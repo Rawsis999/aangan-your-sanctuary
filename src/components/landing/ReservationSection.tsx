@@ -36,6 +36,11 @@ const ReservationSection = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (date && timeSlot && name && phone) {
+      const activity = activityAddon !== "none" ? activityAddons.find((a) => a.id === activityAddon)?.label : "None";
+      const message = `Hi Aangan! I'd like to book a table.\n\n` +
+        `👤 Name: ${name}\n📞 Phone: ${phone}\n📅 Date: ${format(date, "PPP")}\n⏰ Time: ${timeSlot}\n👥 Party Size: ${partySize}\n🎨 Activity: ${activity}`;
+      const whatsappUrl = `https://wa.me/917060064385?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, "_blank");
       setSubmitted(true);
     }
   };
@@ -108,7 +113,7 @@ const ReservationSection = () => {
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  placeholder="+91 98765 43210"
+                  placeholder="+91 7060064385"
                   required
                   className="w-full bg-card border border-border rounded-lg px-4 py-3 font-sans text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/30"
                 />

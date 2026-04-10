@@ -92,7 +92,7 @@ const FooterSection = () => {
                 <p className="font-sans text-cream/50 text-sm">Shahpur Jat, New Delhi</p>
                 <p className="font-sans text-cream/50 text-sm">Open Daily: 11 AM – 11:30 PM · Closed Mondays</p>
                 <p className="font-sans text-cream/50 text-sm">hello@aangan.cafe</p>
-                <p className="font-sans text-cream/50 text-sm">+91 98765 43210</p>
+                <p className="font-sans text-cream/50 text-sm">+91 7060064385</p>
               </div>
             </div>
 

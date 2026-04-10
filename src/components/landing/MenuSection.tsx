@@ -14,6 +14,8 @@ import menuGuavaFizz from "@/assets/menu-guava-fizz.jpg";
 import menuBanta from "@/assets/menu-banta.jpg";
 import menuRoseMilk from "@/assets/menu-rose-milk.jpg";
 import menuColdBrew from "@/assets/menu-cold-brew.jpg";
+import menuMasalaChai from "@/assets/menu-masala-chai.jpg";
+import menuCoffee from "@/assets/menu-coffee.jpg";
 import menuNutellaParatha from "@/assets/menu-nutella-paratha.jpg";
 import menuGulabCheesecake from "@/assets/menu-gulab-cheesecake.jpg";
 import experiencePicnic from "@/assets/experience-picnic.jpg";
@@ -63,6 +65,8 @@ const menuCategories: { key: string; title: string; icon: string; tagline: strin
       { name: "The OG Banta (Remix)", desc: "Lemon-ginger soda served in a vintage bottle, spiked with a dash of roasted cumin and fresh mint leaves.", price: "₹129", image: menuBanta },
       { name: "Rose Milk Cloud", desc: "A nostalgic rose-syrup milkshake topped with a light vanilla cold foam and dried edible rose petals.", price: "₹169", image: menuRoseMilk },
       { name: "Desi Cold Brew", desc: "16-hour steeped coffee concentrate with a hint of dark jaggery and a cardamom finish.", price: "₹199", image: menuColdBrew },
+      { name: "Masala Chai", desc: "A rich, full-bodied brew simmered with cardamom, ginger, cinnamon, and cloves. Served in a traditional kulhad — the way chai was meant to be.", price: "₹99", image: menuMasalaChai },
+      { name: "Aangan Coffee", desc: "Smooth, aromatic house coffee with a velvety crema. Available as a latte, cappuccino, or black — crafted with freshly ground beans.", price: "₹149", image: menuCoffee },
     ],
   },
   {
